@@ -18,8 +18,6 @@ export function ImageGallery({ searchText, page, handlePer }) {
     setIsLoading(true);
     fetchSearch(searchText, page)
       .then(hits => {
-        console.log(hits);
-        console.log(images);
         setImages(i => [...i, ...hits.hits]);
       })
       .finally(() => {
