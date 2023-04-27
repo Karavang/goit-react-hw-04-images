@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import { Modal } from './Modal';
 
-export class ImageGalleryItem extends Component {
-  state = {
-    image: this.props.image,
-    isFull: null,
-  };
-  render() {
-    return (
-      <li
-        className="ImageGalleryItem"
-        key={this.state.image.id}
-        onKeyDown={e => {
-          if (e.key === 'Escape') {
-            this.setState({ isFull: false });
-          }
-        }}
-        onClick={() => {
-          this.setState({ isFull: true });
-        }}
-      >
-        <Modal image={this.state.image} isFull={this.state.isFull} />
-        <img
-          className="ImageGalleryItem-image"
-          src={this.state.image.webformatURL}
-          alt={this.state.image.tags}
-        />
-      </li>
-    );
-  }
+export function ImageGalleryItem({ image }) {
+  const [isFull, setIsFull] = useState(null);
+
+  return (
+    <li
+      className="ImageGalleryItem"
+      key={image.id}
+      onKeyDown={e => {
+        if (e.key === 'Escape') {
+          setIsFull(false);
+        }
+      }}
+      onClick={() => {
+        setIsFull(true);
+      }}
+    >
+      <Modal image={image} isFull={isFull} />
+      <img
+        className="ImageGalleryItem-image"
+        src={image.webformatURL}
+        alt={image.tags}
+      />
+    </li>
+  );
 }

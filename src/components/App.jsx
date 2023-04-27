@@ -1,32 +1,24 @@
 import { Searchbar } from './Searchbar';
 import { ImageGallery } from './ImageGallery';
-import { Component } from 'react';
+import { useState } from 'react';
 
-export class App extends Component {
-  state = {
-    query: '',
-    searchText: '',
-    page: 1,
+export function App() {
+  const [searchText, setSearchText] = useState('');
+  const [page, setPage] = useState(1);
+  const handleSearchText = e => {
+    setSearchText(e);
+    console.log(searchText);
   };
-  handleSearchText = e => {
-    this.setState({ searchText: e });
-  };
-  handlePer = e => {
-    this.setState({ page: this.state.page + e });
+  const handlePer = e => {
+    setPage(prev => prev + e);
+    console.log(page);
   };
 
-  render() {
-    console.log(this.state.searchText);
-    return (
-      <>
-        <Searchbar searchText={this.handleSearchText} />
-        <ImageGallery
-          searchText={this.state.searchText}
-          handleisLoading={this.handleisLoading}
-          page={this.state.page}
-          handlePer={this.handlePer}
-        />
-      </>
-    );
-  }
+  console.log(searchText);
+  return (
+    <>
+      <Searchbar searchText={handleSearchText} />
+      <ImageGallery searchText={searchText} page={page} handlePer={handlePer} />
+    </>
+  );
 }
