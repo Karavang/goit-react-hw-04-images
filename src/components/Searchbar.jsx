@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 export function Searchbar({ searchText }) {
-  const [value, setValue] = useState('');
+  const [text, setValue] = useState('');
 
   const handleChange = ({ target: { value } }) => {
+    console.log(value);
     setValue(value);
   };
 
   const upgradeSearchText = e => {
     e.preventDefault();
-    searchText(value.trim());
+    searchText(text.trim());
   };
 
-  console.log(value);
+  console.log(text);
   return (
     <header className="searchbar">
       <form className="SearchForm" onSubmit={upgradeSearchText}>
@@ -24,7 +25,7 @@ export function Searchbar({ searchText }) {
           autoComplete="off"
           autoFocus
           onChange={handleChange}
-          value={value}
+          value={text}
           placeholder="Search images and photos"
         />
       </form>

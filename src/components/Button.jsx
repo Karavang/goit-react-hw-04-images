@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-
-export class Button extends Component {
-  render() {
-    return (
-      <button
-        className="Button image"
-        onClick={() => {
-          this.props.handlePer(1);
-        }}
-      >
-        Load more
-      </button>
-    );
-  }
+import React from 'react';
+import PropTypes from 'prop-types';
+export function Button({ handlePer }) {
+  console.log(handlePer);
+  return (
+    <button
+      className="Button image"
+      onClick={() => {
+        handlePer(1);
+      }}
+    >
+      Load more
+    </button>
+  );
 }
+Button.propTypes = {
+  handlePer: PropTypes.func,
+};

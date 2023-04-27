@@ -1,5 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
-
+import PropTypes from 'prop-types';
 export const Modal = ({ image, isFull }) => {
   const full = basicLightbox.create(
     `
