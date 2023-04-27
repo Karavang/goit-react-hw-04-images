@@ -9,3 +9,7 @@ export const Modal = ({ image, isFull }) => {
   // console.log(isFull);
   isFull ? full.show() : full.close();
 };
+Modal.propTypes = {
+  isFull: PropTypes.bool,
+  image: PropTypes.object,
+};

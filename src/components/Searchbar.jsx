@@ -32,3 +32,6 @@ export function Searchbar({ searchText }) {
     </header>
   );
 }
+Searchbar.propTypes = {
+  searchText: PropTypes.string,
+};

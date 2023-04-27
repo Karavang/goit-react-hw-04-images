@@ -27,3 +27,6 @@ export function ImageGalleryItem({ image }) {
     </li>
   );
 }
+ImageGalleryItem.propTypes = {
+  image: PropTypes.object,
+};
